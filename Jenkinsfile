@@ -16,14 +16,15 @@ pipeline {
 
         stage('Install & Build Angular App') {
             steps {
-                // Using Docker agent/container to keep host machine clean
-                sh """
-                    docker run --rm \\
-                        -v "${WORKSPACE}":/app \\
-                        -w /app \\
-                        ${NODE_IMAGE} \\
+                sh '''
+                    docker run --rm \
+                        -e CI=true \
+                        -e NG_CLI_ANALYTICS=false \
+                        -v "${WORKSPACE}":/app \
+                        -w /app \
+                        node:20-alpine \
                         sh -c "npm ci && npm run build -- --configuration=production"
-                """
+                '''
             }
         }
 
