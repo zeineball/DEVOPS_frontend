@@ -22,7 +22,7 @@ pipeline {
                         -e NG_CLI_ANALYTICS=false \
                         -v "${WORKSPACE}":/app \
                         -w /app \
-                        node:20-alpine \
+                        ${NODE_IMAGE} \
                         sh -c "npm ci && npm run build -- --configuration=production"
                 '''
             }
