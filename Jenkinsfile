@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Adjust Docker image tag or Nginx output paths as needed
-        NODE_IMAGE = 'node:22-alpine'
+        NODE_IMAGE = 'node:24-alpine'
         APP_NAME   = 'angular-frontend'
     }
 
